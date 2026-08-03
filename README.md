@@ -1,41 +1,243 @@
-🛡️ Secure Mail & URL Analyzer Platformu
-Bu proje; yapay zeka (Google Gemini LLM) ve akıllı kural tabanlı hibrit motorlar kullanarak e-posta içeriklerini ve URL'leri oltalama (phishing), sosyal mühendislik ve zararlı bağlantı risklerine karşı analiz eden kurumsal düzeyde bir Siber Güvenlik Analiz Platformudur.
+# 🛡️ Secure Mail & URL Analyzer Platform
 
-🚀 Proje Mimarisi ve Teknolojiler
-Platform, modern mikroservis mimarisine uygun olarak 3 ana katmandan oluşmaktadır:
+<p align="center">
 
-Backend: Java 21 & Spring Boot (JPA/Hibernate, RESTful API, LLM Entegrasyonu)
+![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=for-the-badge&logo=springboot)
+![Angular](https://img.shields.io/badge/Angular-20-DD0031?style=for-the-badge&logo=angular)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?style=for-the-badge&logo=postgresql)
+![Docker](https://img.shields.io/badge/Docker-Enabled-2496ED?style=for-the-badge&logo=docker)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Ready-326CE5?style=for-the-badge&logo=kubernetes)
 
-Database: PostgreSQL 15 (İlişkisel veri yönetimi ve analiz geçmişi kayıtları)
+</p>
 
-Frontend: Angular / Modern Web Teknolojileri (Nginx üzerinde sunulan SPA arayüzü)
+**Secure Mail & URL Analyzer** is an enterprise-grade **Cybersecurity Analysis Platform** that leverages **Artificial Intelligence (Google Gemini LLM)** together with an intelligent **rule-based hybrid analysis engine** to analyze emails and URLs against phishing attacks, social engineering attempts, and malicious links.
 
-Orkestrasyon: Docker & Docker Compose / Kubernetes Deployment ve Service konfigürasyonları
+If the LLM service becomes unavailable, the platform automatically switches to its local rule-based analysis engine, ensuring uninterrupted service availability.
 
-📌 Temel Özellikler
-E-Posta Güvenlik Analizi: Gelen metinleri aciliyet dili, sahte kurum bildirimleri, şifre/TC kimlik talepleri ve güvensiz bağlantılar açısından inceler.
+---
 
-URL (Bağlantı) Güvenliği: Doğrudan linkleri tarayarak HTTP/HTTPS protokol durumunu, domain uzunluğunu ve marka taklidi (phishing) risklerini raporlar.
+# 🚀 Project Architecture
 
-Geçmiş Analizler: Yapılan tüm tarama geçmişini veritabanında saklar ve dinamik bir tabloda listeler.
+```text
+                     +----------------------+
+                     |    Angular Frontend  |
+                     +----------+-----------+
+                                |
+                                |
+                     REST API (HTTP/JSON)
+                                |
+                                ▼
+                  +----------------------------+
+                  | Spring Boot Backend (Java) |
+                  +------------+---------------+
+                               |
+            +------------------+------------------+
+            |                                     |
+            ▼                                     ▼
+ +-----------------------+          +---------------------------+
+ | Google Gemini LLM API |          | Rule-Based Security Engine|
+ +-----------------------+          +---------------------------+
+            |                                     |
+            +------------------+------------------+
+                               |
+                               ▼
+                     +------------------+
+                     | PostgreSQL 15 DB |
+                     +------------------+
+```
 
-Admin Dashboard & İstatistikler: Sistem genelindeki toplam analiz sayılarını, risk dağılımlarını (Yüksek, Orta, Düşük) ve en sık karşılaşılan tehdit tiplerini istatistiksel kartlarla sunar.
+---
 
-Akıllı Yedek (Fallback) Güvenlik Motoru: LLM servislerine ulaşılamadığı durumlarda devreye giren yerel kural tabanlı motor sayesinde sistem kesintisiz çalışmaya devam eder.
+# 🛠️ Technologies Used
 
-⚙️ Kurulum ve Çalıştırma (Docker ile)
-Projeyi bilgisayarınızda ayağa kaldırmak için tek yapmanız gereken kök dizinde terminal açıp şu komutu çalıştırmaktır:
+| Layer | Technology |
+|--------|------------|
+| Backend | Java 21, Spring Boot, Spring Data JPA, Hibernate |
+| Frontend | Angular, TypeScript |
+| Database | PostgreSQL 15 |
+| AI | Google Gemini LLM |
+| Containerization | Docker, Docker Compose |
+| Orchestration | Kubernetes |
+| API | RESTful API |
+| Build Tool | Maven |
 
-PowerShell
+---
+
+# ✨ Core Features
+
+## 📧 Email Security Analysis
+<img width="1896" height="855" alt="Ekran görüntüsü 2026-08-03 232941" src="https://github.com/user-attachments/assets/0948627d-b8fb-4f47-9d71-0eab907091df" />
+
+* Urgency language detection
+* Suspicious organization detection
+* Credential request detection (ID numbers, passwords, etc.)
+* Social engineering analysis
+* Unsafe link detection
+* AI-powered risk assessment
+
+---
+
+## 🔗 URL Security Analysis
+<img width="1896" height="857" alt="Ekran görüntüsü 2026-08-03 232956" src="https://github.com/user-attachments/assets/63eea8da-d8e1-4fbb-b258-cbbab014c4df" />
+
+* HTTP / HTTPS validation
+* Domain length analysis
+* Brand impersonation detection
+* Suspicious character analysis
+* Phishing risk assessment
+
+---
+## 📜 Analysis History
+<img width="1897" height="860" alt="Ekran görüntüsü 2026-08-03 233011" src="https://github.com/user-attachments/assets/7345c06d-2654-4ddc-b574-33f0864258f3" />
+
+All email and URL scanning history performed on the system is securely stored in the PostgreSQL database. Through this module, users can:
+
+* Access the list view of all past analyses,
+* Examine the determined **Risk Levels (High, Medium, Low)** and risk scores of target contents,
+* Review detailed security explanations and detected threats generated by the AI or rule engine retrospectively.
+---
+## 📊 Admin Dashboard
+<img width="1897" height="861" alt="Ekran görüntüsü 2026-08-03 233019" src="https://github.com/user-attachments/assets/80fc042c-6623-4e2d-b5d3-bb8502634b3d" />
+
+The administrator dashboard provides:
+
+* Total number of analyses
+* Daily analysis statistics
+* Risk distribution
+
+  * 🟥 High
+  * 🟨 Medium
+  * 🟩 Low
+
+* Most common threat categories
+* Recent analyses
+
+---
+
+# 🧠 Hybrid Security Engine
+
+The platform combines two different analysis approaches.
+
+### 1. Artificial Intelligence Analysis
+
+Google Gemini LLM performs:
+
+* Content analysis
+* Context evaluation
+* Social engineering detection
+* Risk scoring
+
+---
+
+### 2. Fallback Rule Engine
+
+If the LLM service is unavailable, the system automatically switches to the local analysis engine, which performs:
+
+* Regex-based validation
+* Keyword analysis
+* URL security validation
+* Risk scoring algorithms
+
+This ensures uninterrupted platform availability.
+
+---
+
+# 🗄️ Database
+
+The platform uses PostgreSQL.
+
+Stored data includes:
+
+* Analyzed email content
+* Analyzed URL
+* Risk level
+* Risk score
+* Detected threats
+* Analysis timestamp
+* AI-generated response
+
+---
+
+# 🐳 Docker Installation
+
+Clone the repository.
+
+```bash
+git clone <repository-url>
+```
+
+Navigate to the project directory.
+
+```bash
+cd secure-mail-analyzer
+```
+
+Build and start the containers.
+
+```bash
 docker-compose up --build -d
-Frontend Arayüzü: http://localhost:4200
+```
 
-Backend API: http://localhost:8080
+---
 
-☸️ Kubernetes (K8s) Dağıtım Adımları
-Projeyi bulut sunuculara veya cluster ortamına taşımak için hazırlanan deployment ve service YAML konfigürasyonları:
+## Application URLs
 
-Bash
+| Service | Address |
+|---------|---------|
+| Frontend | http://localhost:4200 |
+| Backend API | http://localhost:8080 |
+
+---
+
+# ☸️ Kubernetes Deployment
+
+```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
-Geliştirici: Ali Berat Algün
+```
+
+---
+
+# 📁 Project Structure
+
+```text
+Secure-Mail-URL-Analyzer/
+│
+├── backend/
+│   ├── src/
+│   ├── Dockerfile
+│   └── pom.xml
+│
+├── frontend/
+│   ├── src/
+│   ├── Dockerfile
+│   └── package.json
+│
+├── k8s/
+│   ├── deployment.yaml
+│   └── service.yaml
+│
+├── docker-compose.yml
+└── README.md
+```
+
+---
+
+# 🔮 Future Improvements
+
+* JWT Authentication
+* Role-Based Authorization
+* Real-Time Notifications
+* SIEM Integration
+* PDF Analysis Reports
+* Attachment Security Analysis
+* VirusTotal Integration
+* WHOIS & DNS Lookup
+* Multi-LLM Support (Gemini, OpenAI, Claude)
+
+---
+
+# 👨‍💻 Developer
+
+**Ali Berat Algün**
