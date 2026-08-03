@@ -90,7 +90,7 @@ LLM servislerine ulaşılamadığı durumlarda sistem, yerel kural tabanlı anal
 
 ---
 
-## 📜 Geçmiş Analizler (Analysis History)
+## 📜 Geçmiş Analizler
 <img width="1897" height="860" alt="Ekran görüntüsü 2026-08-03 233011" src="https://github.com/user-attachments/assets/7345c06d-2654-4ddc-b574-33f0864258f3" />
 Sistem üzerinde gerçekleştirilen tüm e-posta ve URL tarama geçmişi PostgreSQL veritabanında güvenli bir şekilde saklanır. Kullanıcılar bu modül üzerinden:
 
