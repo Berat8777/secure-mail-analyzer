@@ -98,8 +98,7 @@ Sistem üzerinde gerçekleştirilen tüm e-posta ve URL tarama geçmişi Postgre
 * Hedef içeriklerin tespit edilen **Risk Seviyelerini (Yüksek, Orta, Düşük)** ve risk puanlarını inceleyebilir,
 * Yapay zeka veya kural motoru tarafından üretilen detaylı güvenlik açıklamalarını ve tespit edilen tehditleri geriye dönük olarak gözden geçirebilir.
 ---
-## 📊 Dashboard
-Yönetici panelinde;
+## 📊Yönetici Paneli
 <img width="1897" height="861" alt="Ekran görüntüsü 2026-08-03 233019" src="https://github.com/user-attachments/assets/80fc042c-6623-4e2d-b5d3-bb8502634b3d" />
 
 * Toplam analiz sayısı
