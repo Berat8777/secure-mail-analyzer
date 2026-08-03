@@ -231,5 +231,3 @@ Secure-Mail-URL-Analyzer/
 # 👨‍💻 Geliştirici
 
 **Ali Berat Algün**
-
-Cyber Security & Software Developer
