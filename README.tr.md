@@ -170,7 +170,7 @@ git clone <repository-url>
 Proje dizinine girin.
 
 ```bash
-cd Secure-Mail-URL-Analyzer
+cd secure-mail-analyzer
 ```
 
 Container'ları başlatın.
