@@ -164,7 +164,7 @@ Saklanan veriler:
 Projeyi klonlayın.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Berat8777/secure-mail-analyzer.git
 ```
 
 Proje dizinine girin.
