@@ -1,0 +1,120 @@
+<div class="container">
+  <h1>Yapay Zeka Destekli Güvenlik Analizi</h1>
+  
+  <!-- Kimlik Bilgisi (Her zaman görünür) -->
+  <div class="user-info-section">
+    <input
+      type="email"
+      [(ngModel)]="email"
+      placeholder="Kayıtlı e-posta adresiniz (Zorunlu)"
+      autocomplete="email"
+      class="email-input">
+  </div>
+
+  <div class="tabs">
+    <button [class.active]="analysisType === 'EMAIL'" (click)="setAnalysisType('EMAIL')">
+      📧 E-Posta Analizi
+    </button>
+    <button [class.active]="analysisType === 'URL'" (click)="setAnalysisType('URL')">
+      🔗 URL Analizi
+    </button>
+    <button [class.active]="analysisType === 'HISTORY'" (click)="setAnalysisType('HISTORY')">
+      📂 Geçmiş Analizlerim
+    </button>
+    <button [class.active]="analysisType === 'ADMIN'" (click)="setAnalysisType('ADMIN')">
+      📊 Admin Dashboard
+    </button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-box">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Analiz Input Alanı (SADECE Email veya URL seçiliyse görünür) -->
+  <div class="input-section" *ngIf="analysisType === 'EMAIL' || analysisType === 'URL'">
+    <textarea 
+      [(ngModel)]="emailContent" 
+      [placeholder]="analysisType === 'EMAIL' ? 'Şüphelendiğiniz metni buraya yapıştırın...' : 'Şüphelendiğiniz bağlantıyı (URL) buraya yapıştırın...'"
+      rows="8">
+    </textarea>
+    
+    <button (click)="analyzeContent()" [disabled]="isLoading || !emailContent.trim() || !email.trim()">
+      <span *ngIf="!isLoading">Güvenlik Analizi Başlat</span>
+      <span *ngIf="isLoading">Yapay Zeka İnceliyor...</span>
+    </button>
+  </div>
+
+  <!-- Yeni Analiz Sonucu -->
+  <div *ngIf="analysisResult && analysisType !== 'HISTORY'" class="result-section">
+    <h2>Analiz Sonucu</h2>
+    <div class="risk-badge" [ngClass]="analysisResult.riskLevel">
+      Risk Seviyesi: {{ analysisResult.riskLevel }}
+    </div>
+    <div class="reasons">
+      <h3>Tespit Edilen Tehditler:</h3>
+      <ul>
+        <li *ngFor="let reason of analysisResult.riskReasons">{{ reason }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Geçmiş Analizler Tablosu (History seçiliyse görünür) -->
+  <div class="history-section" *ngIf="analysisType === 'HISTORY'">
+    <h2>Geçmiş Analizleriniz</h2>
+    <p *ngIf="isLoading">Yükleniyor...</p>
+    
+    <div *ngIf="historyList.length === 0 && !isLoading">
+      <p>Henüz kayıtlı bir analiziniz bulunmuyor.</p>
+    </div>
+
+    <table *ngIf="historyList.length > 0 && !isLoading" class="history-table">
+      <thead>
+        <tr>
+          <th>Tür</th>
+          <th>İçerik Özeti</th>
+          <th>Risk Seviyesi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of historyList">
+          <td>{{ item.contentType }}</td>
+          <td class="truncate" [title]="item.content">{{ item.content }}</td>
+          <td>
+            <span class="risk-badge-small" [ngClass]="item.riskLevel">{{ item.riskLevel }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Admin Paneli (Admin seçiliyse görünür) -->
+  <div class="admin-section" *ngIf="analysisType === 'ADMIN' && stats">
+    <h2>Sistem Analiz İstatistikleri</h2>
+    
+    <div class="dashboard-cards">
+      <div class="card total">
+        <h3>Toplam Analiz</h3>
+        <p>{{ stats.totalAnalyses }}</p>
+      </div>
+      <div class="card high">
+        <h3>Yüksek Risk</h3>
+        <p>{{ stats.highRisk }}</p>
+      </div>
+      <div class="card medium">
+        <h3>Orta Risk</h3>
+        <p>{{ stats.mediumRisk }}</p>
+      </div>
+      <div class="card low">
+        <h3>Düşük Risk</h3>
+        <p>{{ stats.lowRisk }}</p>
+      </div>
+    </div>
+
+    <div class="common-threats">
+      <h3>En Sık Görülen Tehdit Tipleri</h3>
+      <ul>
+        <li *ngFor="let threat of stats.commonThreats">{{ threat }}</li>
+      </ul>
+      <p *ngIf="stats.commonThreats.length === 0">Henüz yeterli tehdit verisi yok.</p>
+    </div>
+  </div>
+</div>
