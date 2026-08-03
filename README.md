@@ -170,7 +170,7 @@ git clone <repository-url>
 Navigate to the project directory.
 
 ```bash
-cd Secure-Mail-URL-Analyzer
+cd secure-mail-analyzer
 ```
 
 Build and start the containers.
