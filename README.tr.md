@@ -90,9 +90,15 @@ LLM servislerine ulaşılamadığı durumlarda sistem, yerel kural tabanlı anal
 
 ---
 
-## 📊 Dashboard
-<img width="1897" height="860" alt="Ekran görüntüsü 2026-08-03 233011" src="https://github.com/user-attachments/assets/8624f588-f420-419e-a76c-d0dca8884755" />
+## 📜 Geçmiş Analizler (Analysis History)
+<img width="1897" height="860" alt="Ekran görüntüsü 2026-08-03 233011" src="https://github.com/user-attachments/assets/7345c06d-2654-4ddc-b574-33f0864258f3" />
+Sistem üzerinde gerçekleştirilen tüm e-posta ve URL tarama geçmişi PostgreSQL veritabanında güvenli bir şekilde saklanır. Kullanıcılar bu modül üzerinden:
 
+* Geçmişte yapılan tüm analizlerin liste görünümüne ulaşabilir,
+* Hedef içeriklerin tespit edilen **Risk Seviyelerini (Yüksek, Orta, Düşük)** ve risk puanlarını inceleyebilir,
+* Yapay zeka veya kural motoru tarafından üretilen detaylı güvenlik açıklamalarını ve tespit edilen tehditleri geriye dönük olarak gözden geçirebilir.
+---
+## 📊 Dashboard
 Yönetici panelinde;
 <img width="1897" height="861" alt="Ekran görüntüsü 2026-08-03 233019" src="https://github.com/user-attachments/assets/80fc042c-6623-4e2d-b5d3-bb8502634b3d" />
 
