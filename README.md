@@ -214,7 +214,7 @@ kubectl apply -f k8s/frontend.yaml
 # 📁 Project Structure
 
 ```text
-Secure-Mail-URL-Analyzer/
+secure-mail-analyzer/
 │
 ├── backend/
 │   ├── src/
@@ -227,8 +227,13 @@ Secure-Mail-URL-Analyzer/
 │   └── package.json
 │
 ├── k8s/
-│   ├── deployment.yaml
-│   └── service.yaml
+│   ├── database.yaml
+│   ├── backend.yaml
+│   └── frontend.yaml
+│
+├── docs/
+│   ├── api_documentation.md
+│   └── database_schema.md
 │
 ├── docker-compose.yml
 └── README.md
