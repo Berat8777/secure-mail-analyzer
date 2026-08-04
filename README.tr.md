@@ -178,7 +178,11 @@ Container'ları başlatın.
 ```bash
 docker-compose up --build -d
 ```
-
+## 🧪 Test Hesapları
+Sistem, analiz geçmişini belirli kullanıcılara bağlamak üzere yapılandırılmıştır. Gerçek veri kullanımını engellemek amacıyla, projeyi test ederken arayüzdeki "E-Posta Adresi" alanına aşağıdaki hazır test hesaplarından birini girebilirsiniz:
+* `test@analyzer.com`
+* `admin@analyzer.com`
+* `demo@analyzer.com`
 ---
 
 ## Uygulama Adresleri
