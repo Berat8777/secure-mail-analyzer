@@ -208,7 +208,7 @@ kubectl apply -f k8s/
 kubectl apply -f k8s/database.yaml
 kubectl apply -f k8s/backend.yaml
 kubectl apply -f k8s/frontend.yaml
-
+```
 ---
 
 # 📁 Project Structure
