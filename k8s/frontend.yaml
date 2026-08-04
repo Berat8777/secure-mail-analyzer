@@ -10,7 +10,7 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 80
-      nodePort: 30080 # Dışarıdan tarayıcı ile erişilecek port
+      nodePort: 30080 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -28,6 +28,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mail-analyzer-frontend:latest
+          image: secure-mail-analyzer-frontend:latest
+          imagePullPolicy: Never 
           ports:
             - containerPort: 80

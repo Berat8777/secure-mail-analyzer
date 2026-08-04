@@ -196,10 +196,16 @@ Sistem, analiz geçmişini belirli kullanıcılara bağlamak üzere yapılandır
 
 # ☸️ Kubernetes Dağıtımı
 
+Projeyi Minikube veya Docker Desktop Kubernetes üzerinde ayağa kaldırmak için YAML dosyaları modüler olarak ayrılmıştır. Terminalde sırasıyla şu komutları çalıştırabilirsiniz:
+
 ```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-```
+# Tüm mikroservisleri ve veritabanını tek seferde ayağa kaldırmak için:
+kubectl apply -f k8s/
+
+# Veya ayrı ayrı başlatmak isterseniz:
+kubectl apply -f k8s/database.yaml
+kubectl apply -f k8s/backend.yaml
+kubectl apply -f k8s/frontend.yaml
 
 ---
 

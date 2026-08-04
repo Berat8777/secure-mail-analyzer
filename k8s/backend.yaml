@@ -26,7 +26,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mail-analyzer-backend:latest
+          image: secure-mail-analyzer-backend:latest
+          imagePullPolicy: Never 
           ports:
             - containerPort: 8080
           env:
@@ -37,4 +38,4 @@ spec:
             - name: SPRING_DATASOURCE_PASSWORD
               value: "secure_password_123"
             - name: GEMINI_API_KEY
-              value: "API_ANAHTARINIZ_BURAYA" # Güvenlik için repoya yüklerken boş bırakılabilir
+              value: "API_ANAHTARINIZ_BURAYA" 

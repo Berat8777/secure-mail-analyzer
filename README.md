@@ -198,10 +198,16 @@ The system is configured to link the analysis history to specific users. To prev
 
 # ☸️ Kubernetes Deployment
 
+To deploy the project on Minikube or Docker Desktop Kubernetes, the YAML files have been modularly separated. You can run the following commands in the terminal:
+
 ```bash
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
-```
+# To deploy all microservices and the database at once:
+kubectl apply -f k8s/
+
+# Or if you want to start them individually:
+kubectl apply -f k8s/database.yaml
+kubectl apply -f k8s/backend.yaml
+kubectl apply -f k8s/frontend.yaml
 
 ---
 
