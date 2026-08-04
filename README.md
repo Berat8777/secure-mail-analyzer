@@ -178,7 +178,13 @@ Build and start the containers.
 ```bash
 docker-compose up --build -d
 ```
+## 🧪 Test Accounts
 
+The system is configured to link the analysis history to specific users. To prevent the use of real data, you can enter one of the following pre-configured test accounts into the "Email Address" field on the interface when testing the project:
+
+* `test@analyzer.com`
+* `admin@analyzer.com`
+* `demo@analyzer.com`
 ---
 
 ## Application URLs

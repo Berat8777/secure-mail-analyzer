@@ -38,15 +38,32 @@ public class BackendApplication {
     }
 
     // 2. Şifre alanı dahil edilerek düzeltilmiş test kullanıcısı ekleme bloğu
+    // 2. Şifre alanı dahil edilerek düzeltilmiş test kullanıcısı ekleme bloğu
     @Bean
     CommandLineRunner initDatabase(JdbcTemplate jdbcTemplate) {
         return args -> {
             try {
+                // Kendi test hesabın
                 jdbcTemplate.update(
-                    "INSERT INTO users (email, username, password, role) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING",
+                    "INSERT INTO users (email, username, password, role) VALUES (?, ?, ?, ?) ON CONFLICT (email) DO NOTHING",
                     "berat@gmail.com", "Berat", "123456", "USER"
                 );
-                System.out.println("--> Test kullanicisi (berat@gmail.com) basariyla eklendi!");
+                
+                // Jüri / Ekstra Test Hesapları
+                jdbcTemplate.update(
+                    "INSERT INTO users (email, username, password, role) VALUES (?, ?, ?, ?) ON CONFLICT (email) DO NOTHING",
+                    "test@analyzer.com", "Test User", "123456", "USER"
+                );
+                jdbcTemplate.update(
+                    "INSERT INTO users (email, username, password, role) VALUES (?, ?, ?, ?) ON CONFLICT (email) DO NOTHING",
+                    "admin@analyzer.com", "Admin User", "123456", "ADMIN"
+                );
+                jdbcTemplate.update(
+                    "INSERT INTO users (email, username, password, role) VALUES (?, ?, ?, ?) ON CONFLICT (email) DO NOTHING",
+                    "demo@analyzer.com", "Demo User", "123456", "USER"
+                );
+                
+                System.out.println("--> Test kullanicilari basariyla eklendi / kontrol edildi!");
             } catch (Exception e) {
                 System.out.println("--> VERITABANI HATASI: " + e.getMessage());
             }
