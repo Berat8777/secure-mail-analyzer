@@ -164,7 +164,7 @@ Stored data includes:
 Clone the repository.
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Berat8777/secure-mail-analyzer.git
 ```
 
 Navigate to the project directory.
